@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/formatting.css}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>Customer Rewards</title>
+</head>
+
+<!--/*@thymesVar id="customerRewardsList" type="java.util.List"*/-->
+<!--/*@thymesVar id="customerRewards" type="com.garygriffaw.rewardprogram.dto.CustomerRewardsDto"*/-->
+
+<body>
+
+<div class="container">
+    <h1>Customer Rewards</h1>
+    <div th:if="${customerRewardsList.isEmpty()}" class="rp-empty-table-text">
+        No customer rewards
+    </div>
+    <div th:if="${!customerRewardsList.isEmpty()}">
+            <div th:each="customerRewards, iterStat : ${customerRewardsList}">
+                <div class="row rp-customer-summary">
+                    <div class="col-md-5">
+                        <span th:text="${customerRewards.customerDisplayName}">Customer</span>
+                    </div>
+                    <div class="col-md-3">
+                        Total Rewards:
+                        <span th:text="${customerRewards.totalRewards}">Customer</span>
+                    </div>
+                    <div class="col">
+                        <a class="btn rp-btn-primary" data-toggle="collapse" th:href="'#monthlyrewards' + ${iterStat.count}"
+                           role="button" aria-expanded="false" th:aria-controls="'monthlyrewards' + ${iterStat.count}">
+                            Display Monthly Rewards
+                        </a>
+                    </div>
+                </div>
+
+                <div class="collapse rp-monthly-rewards-margin" th:id="'monthlyrewards' + ${iterStat.count}">
+                <div th:if="${customerRewards.monthlyRewards.isEmpty()}" class="rp-empty-table-text">
+                    No rewards for this customer.
+                </div>
+                <div th:if="${!customerRewards.monthlyRewards.isEmpty()}">
+                    <table class="table table-borderless table-sm">
+                        <thead class="rp-thead">
+                        <tr>
+                            <th>Month</th>
+                            <th>Monthly Rewards</th>
+                        </tr>
+                        </thead>
+                        <tbody class="rp-tbody">
+                        <tr th:each="monthlyReward : ${customerRewards.monthlyRewards}">
+                            <td th:text="${#temporals.format(monthlyReward.getKey, 'MMMM yyyy')}">Year-Month</td>
+                            <td th:text="${monthlyReward.getValue}">Monthly Rewards</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+
+            </div>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script></div>
+
+</body>
+</html>

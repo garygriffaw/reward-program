@@ -1,0 +1,104 @@
+:root {
+    /* Color Theme Swatches */
+    --wfColors-darkBlue: #103F66;
+    --wfColors-medBlue: #185F99;
+    --wfColors-lightBlue: #497EAA;
+    --wfColors-offWhite: #ebeaf8;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    background-color: whitesmoke;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--wfColors-darkBlue);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top: .5rem;
+}
+
+/* Custom classes */
+.rp-empty-table-text {
+    color: #6c757d;
+    font-size: 1.2rem;
+}
+
+.rp-customer-summary {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.rp-monthly-rewards-margin {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.table .rp-thead th {
+    color: var(--wfColors-medBlue);
+    font-size: 1.2rem;
+}
+
+.table .rp-tbody td {
+    font-size: 1.2rem;
+}
+
+.rp-btn-primary {
+    color: #fff;
+    font-size: .8rem;
+    background-color: var(--wfColors-medBlue);
+    border-color: var(--wfColors-medBlue);
+}
+
+.rp-btn-primary:hover {
+    color: #fff;
+    background-color: var(--wfColors-darkBlue);
+    border-color: var(--wfColors-darkBlue);
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        font-size: 2rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .rp-empty-table-text {
+        font-size: 1.5rem;
+    }
+
+    .table .rp-thead th {
+        font-size: 1.5rem;
+    }
+
+    .table .rp-tbody td {
+        font-size: 1.5rem;
+    }
+
+    .rp-btn-primary {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
